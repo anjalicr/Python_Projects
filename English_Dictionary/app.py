@@ -13,14 +13,23 @@ def word_mean(word):
 
     if small_case_keyword in data.keys():
         return data[small_case_keyword]
+
+    elif word.title() in data.keys():
+        return data[word.title()]
+
+    elif word.upper() in data.keys():
+        return data[word.upper()]
+
     elif len(matching_wordlist) > 0:
         yn = input("Do you mean {} ? If Yes, enter y and if No , enter n: ".format(matching_wordlist[0]))
+
         if yn == 'y':
             return data[matching_wordlist[0]]
         elif yn == 'n':
             return "The word is not in dictionary, please try with correct word."
         else:
-            return "We don't understnad your query."
+            return "We don't understand your query."
+
     else:
         return "The word is not in dictionary, please try with correct word."
 
