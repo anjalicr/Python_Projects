@@ -2,12 +2,13 @@ import json
 import difflib
 from difflib import get_close_matches
 
+# Loading json file in python object
 data = json.load(open("data.json"))
-
 
 def word_mean(word):
 
-    small_case_keyword = word.lower()
+    small_case_keyword = word.lower() # converting case of input word from user to small case
+    # creating list of words that match with the input word from data (here we aare taking only 3 words from data object i.e., default value in get_close_matches)
     matching_wordlist = get_close_matches(small_case_keyword , data.keys())
 
     if small_case_keyword in data.keys():
@@ -27,6 +28,7 @@ word = input("Enter a word: ")
 
 output = word_mean(word)
 
+#checking if the output for user input word is a list and then interating to print every meaning on new line.
 if type(output) == list:
     for item in output:
         print (item)
